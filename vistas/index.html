@@ -1,0 +1,29 @@
+{% extends 'base/base.html'%}
+
+{% block title %} Titulo {% endblock %}
+{% block content %}
+
+<!-- Margen con contenedor centrado-->
+<div class="container ">
+        <div class="row">
+
+        </div>
+    </div>
+<!-- Margen con contenedor centrado-->
+<div class="container2 section ">
+    <div class="row">
+            <form class="col s12">
+                 <!--Otro sistema de columnas por los campos y cardpanel para tener una tarjeta-->
+                <div class="row card-panel">
+                    <!--Ciclo-->
+                    {% for item in list %}
+                        <p>{{ item }}</p>
+                    {% endfor %}
+                    <!--Ciclo-->
+                </div>
+            </form>
+    </div>
+</div>
+  
+    
+{% endblock %}

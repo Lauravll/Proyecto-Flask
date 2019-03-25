@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} {% endblock %}</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/perfect-scrollbar.css' ) }}" rel="stylesheet" />
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css' ) }}" media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/ico/logoUnla.png' ) }}">
+
+</head>
+
+<body>
+    <!--Preloader-->
+
+    <div class="center section" id="circulo">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Deberemos encerrar todo el contenido dentro de un hide-->
+    <div class="hide" id="contenido">
+        <!-- NAVBAR -->
+        <header >
+            <!--Pega el navbar arriba siempre-->
+            <div class="navbar-fixed">
+                <!-- Para poder hacer los alineamientos, nav-wrapper tiene sus propios estilos-->
+                <nav class="granate">
+                    <!--Esta vez es un div para poder darle formato-->
+                    <div class="nav-wrapper">
+                        <div class="row">
+                         
+                    <div class="col s1">
+                        <!--Logo con imagen-->
+                        
+                        <a href="#" id="prueba" class="hide-on-med-and-down" ><i class="material-icons">menu</i></a>
+
+                    </div> 
+                            <div class="col s9">
+                                
+
+                                <!--Menu responsive-->
+                                <!--Si le pongo icono funciona-->
+                                <a href="#" data-target="" class="right sidenav-trigger show-on-large"><i class="material-icons">format_indent_increase</i></a>
+                                <a href="#" data-target="slide-out" class="left sidenav-trigger show-on-med-only"><i class="material-icons">menu</i></a>
+
+                                <!--Desaparecen cuandola pantalla esta en el medio-->
+                                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                    <li>
+                                        <!--data-target como el menu responsive, ademas va un id, afuera va a estar e ul con el id-->
+                                        <a href="" class="dropdown-trigger waves-effect waves-block waves-light " data-target="notifications-dropdown">
+                                            <i class="material-icons">notifications_none
+                                        <small class="notification-badge">5</small>
+                                    </i>
+                                        </a>
+                                    </li>
+
+                                    <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">Docente<i class="material-icons right">arrow_drop_down</i></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!--menu responsive-->
+        <ul id="slide-out" class="sidenav sidenav-fixed show-on-large-only">
+            <li class="sidenav-header granate">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s6">
+                            <img align="middle" vspace="9" src= "{{ url_for('static', filename='images/logo4.png' ) }}" width="78px" height="174px" alt="" class="responsive-img ">
+                        </div>
+                        <div class="col s4">
+                            <h5 class="white-text">Prueba</h5>
+                        </div>
+                        <div class="col 12">
+
+                        </div>
+                        <!--
+                    <a href="#name"><span style="font-size: 84%" class="left white-text name">Universidad Nacional de Lanus</span></a>
+                    -->
+                    </div>
+                </div>
+            </li>
+
+            <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">dashboard</i>
+                    <span class="nav-text">Inicio</span>
+                </a>
+
+            </li>
+
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header  waves-effect waves-cyan ">
+                        <i class="material-icons">dvr</i>
+                        <span class="nav-text">Trabajos Prácticos*</span>
+
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <a href="form-elements.html">
+                                    <i class="material-icons">keyboard_arrow_right</i>
+                                    <span>Editar trabajo</span>
+                                </a>
+                            </li>
+                            <li>
+                                <!--class="active"-->
+                                <a href="16) Autocomplete y Buscador.html">
+                                    <i class="material-icons">keyboard_arrow_right</i>
+                                    <span>Buscar trabajo</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </li>
+            </ul>
+
+            <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">mail_outline</i>
+                    <span class="nav-text">Mensajes</span>
+                </a>
+            </li>
+            <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">today</i>
+                    <span class="nav-text">Calendario</span>
+                </a>
+            </li>
+
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header  waves-effect waves-cyan ">
+                        <i class="material-icons">chrome_reader_mode</i>
+                        <span class="nav-text">Extra*</span>
+
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <a href="form-elements.html">
+                                    <i class="material-icons">keyboard_arrow_right</i>
+                                    <span>Editar trabajo</span>
+                                </a>
+                            </li>
+                            <li>
+                                <!--class="active"-->
+                                <a href="form-layouts.html">
+                                    <i class="material-icons">keyboard_arrow_right</i>
+                                    <span>Buscar trabajo</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header  waves-effect waves-cyan ">
+                        <i class="material-icons">account_circle</i>
+                        <span class="nav-text">Personal*</span>
+
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <a href="user-login.html">
+                                    <i class="material-icons">keyboard_arrow_right</i>
+                                    <span>Editar información</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="user-register.html">
+                                    <i class="material-icons">keyboard_arrow_right</i>
+                                    <span>Recordar clave</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="user-forgot-password.html">
+                                    <i class="material-icons">keyboard_arrow_right</i>
+                                    <span>Cambiar clave</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </li>
+            </ul>
+
+            <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">pie_chart_outlined</i>
+                    <span class="nav-text">Estadísticas</span>
+                </a>
+
+            </li>
+
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="subheader">Más</a></li>
+            <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">import_contacts</i>
+                    <!--<span class="nav-text" onclick="M.toast({html: 'Incluir texto de ayuda', classes: 'granate'})">Ayuda</span>-->
+
+                    <!--Con una funcion-->
+                    <span class="nav-text" onclick="alerta()">Documentación</span>
+                </a>
+            </li>
+
+            <li class="bold ">
+                <a class="collapsible-header waves-effect waves-cyan modal-trigger" href="#modal1">
+                    <i class="material-icons">help_outline</i>
+
+                    <span class="nav-text">Ayuda</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- notifications-dropdown -->
+        <ul id="notifications-dropdown" class="dropdown-content" style="width: 800px !important">
+            <li>
+                <h6>Notificaciones
+                <span class="new badge">5</span>
+              </h6>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="form-layouts.html#!" class="grey-text text-darken-1">
+                    <span class="material-icons circle cyan lighten-4 small">add_shopping_cart</span> Nuevo trabajo practico!</a>
+
+            </li>
+            <li>
+                <a href="form-layouts.html#!" class="grey-text text-darken-1">
+                    <span class="material-icons circle purple lighten-4 small">stars</span> Trabajo completo</a>
+
+            </li>
+            <li>
+                <a href="form-layouts.html#!" class="grey-text text-darken-1">
+                    <span class="material-icons circle amber lighten-4 small">trending_up</span> Reporte del mes generado</a>
+
+            </li>
+
+        </ul>
+
+        <!-- profile-dropdown -->
+        <ul id="profile-dropdown" class="dropdown-content">
+            <li>
+                <a href="form-layouts.html#" class="grey-text text-darken-1">
+                    <i class="material-icons">face</i> Perfil</a>
+            </li>
+            <li>
+                <a href="form-layouts.html#" class="grey-text text-darken-1">
+                    <i class="material-icons">settings</i> Ajustes</a>
+            </li>
+            <li>
+                <a href="form-layouts.html#" class="grey-text text-darken-1">
+                    <i class="material-icons">live_help</i> Ayuda</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="form-layouts.html#" class="grey-text text-darken-1">
+                    <i class="material-icons">lock_outline</i> Bloquear</a>
+            </li>
+            <li>
+                <a href="form-layouts.html#" class="grey-text text-darken-1">
+                    <i class="material-icons">keyboard_tab</i> Salir</a>
+            </li>
+        </ul>
+
+        <main>
+            {% block content %}
+            
+            
+            {% endblock %}
+           
+        </main>
+
+        <div class="container section">
+                <div class="row">
+                    <div class="col s12">
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <h4>Modal Header</h4>
+                                <p>A bunch of text</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!--Puede ir posicionado en cualquier parte del html, puse toolbar para que se convierta en toolbar-->
+        <div class="fixed-action-btn toolbar">
+            <!--ancla-->
+            <a class="btn-floating btn-large granate">
+                <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+                <!--Cada li tiene un ancla con la clase floating y dentro de la ancla hay un icono-->
+                <li><a class="btn-floating "><i class="material-icons">insert_chart</i></a></li>
+                <li><a class="btn-floating "><i class="material-icons">format_quote</i></a></li>
+                <li><a class="btn-floating"><i class="material-icons">publish</i></a></li>
+                <li><a class="btn-floating "><i class="material-icons">attach_file</i></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js' ) }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/perfect-scrollbar.min.js' ) }}" ></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/funciones.js' ) }}"></script>
+    
+    <!-- Inicializamos el Javascript (todas sus funciones)-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
+
+    <!--Dropdown abajo de boton-->
+    <script>
+        $(document).ready(function() {
+            $(".dropdown-trigger").dropdown({
+                coverTrigger: false,
+                hover: true,
+                constrainWidth: false
+            });
+        });
+    </script>
+
+    <!--
+    <script>
+    $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton();
+    });
+    </script>-->
+
+    <!--Floatting Button-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                hoverEnabled: false,
+                toolbarEnabled: true
+            });
+        });
+    </script>
+
+    <!--Carousel-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.carousel');
+            var instances = M.Carousel.init(elems, {
+                fullWidth: true,
+                duration: 500,
+                indicators: true
+            });
+        });
+    </script>
+
+    <!--Slider-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.slider');
+            var instances = M.Slider.init(elems);
+        });
+    </script>
+
+    <!--Imagen agrandada-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems);
+        });
+    </script>
+
+    <!--SideNav-->
+    <script>
+        $(document).ready(function() {
+            // SIDENAV
+            $('.sidenav').sidenav();
+            $('.sidenav').sidenav('open');
+        });
+    </script>
+
+    <!--Collapsible (para los dropdown)-->
+    <script>
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+        });
+    </script>
+
+    <!--Scrollbar mas chico-->
+    <script>
+        $(document).ready(function($) {
+
+            $('#slide-out').perfectScrollbar();
+
+        });
+    </script>
+
+    <!--Alerta-->
+    <!--Sirve para cualquier elemento-->
+    <!--
+<script>
+    M.toast({
+        html: 'Formulario enviado!',
+        classes: 'granate'
+    })
+</script>
+-->
+
+    <!--Alerta-->
+    <!--Sirve para cualquier elemento-->
+
+    <script>
+        function alerta() {
+            M.toast({
+                html: 'Formulario enviado!',
+                classes: 'granate'
+            })
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.modal').modal();
+        });
+    </script>
+
+</body>
+
+</html>
