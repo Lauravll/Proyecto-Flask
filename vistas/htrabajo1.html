@@ -1,0 +1,170 @@
+{% extends 'base/base.html'%} {% block title %} {{titulo}} {% endblock %} {% block scriptini %}
+<!-- Código -->
+<!-- Función que agrega respuestas en función del valor ingresado por el usuario -->
+
+
+<script type='text/javascript'>
+    function addFields(c) {
+		$('#btn'+ c).removeClass('hide');
+        var count = c;
+        var number = document.getElementById("fieldnum" + count).value;
+		
+        var container = document.getElementById("container" + count);
+		var btn = document.getElementById("filldetails" + count);
+		var h6 = document.getElementById("h6" + count);
+		var field = document.getElementById("fieldnum" + count);
+		
+			btn.style.display = "none";
+			h6.style.display = "none";
+			field.style.display = "none";
+		
+		
+		
+        while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+        }
+        for (i = 0; i < number; i++) {
+
+           
+			var div1 = document.createElement("div") 
+			div1.className = "row card-panel";
+			var div2 = document.createElement("div") 
+			div2.className = "input-field col s6";
+			var div3 = document.createElement("div") 
+			div3.className = "input-field col s12";
+
+			var h = document.createElement("H6")                // Create a <h1> element
+			var t = document.createTextNode("Respuesta " + (i + 1) + " ")     // Create a text node
+			
+			
+			
+			
+            var label = document.createElement("label");
+			
+			label.appendChild(t);
+			var input = document.createElement("input");
+            input.setAttribute("type", "checkbox");
+            input.name = "checkbox" + c + "-" + (i + 1);
+            label.appendChild(input);
+			
+			var span = document.createElement("span");
+			span.appendChild(t);
+			label.appendChild(span);
+			div2.appendChild(label);
+			
+			var input = document.createElement("input");
+            input.type = "text";
+			i++;
+			input.setAttribute("placeholder", "Ingrese su respuesta " + i  +" y seleccione si es la correcta");
+			i--;
+            input.name = "input" + c + "-" + (i + 1);
+            input.className = "form-control";
+            div3.appendChild(input);
+			
+			div1.appendChild(div2);
+			div1.appendChild(div3);
+			container.appendChild(div2);
+			container.appendChild(div3);
+			
+		
+        }
+    }
+</script>
+<script>
+function MostrarFields(c) {
+        var count = c;
+        var number = document.getElementById("fieldnum" + count).value;
+		
+        var container = document.getElementById("container" + count);
+		var btn = document.getElementById("filldetails" + count);
+		var h6 = document.getElementById("h6" + count);
+		var field = document.getElementById("fieldnum" + count);
+		
+			btn.style.display = "";
+			h6.style.display = "";
+			field.style.display = "";
+		
+		
+		
+        while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+        }
+        
+		
+    }
+</script>
+
+<!-- Fin Código -->
+{% endblock scriptini %} {% block content %} {% from "_macro.html" import render_field %}
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+<!-- Margen con contenedor centrado-->
+<div class="container ">
+    <div class="row">
+
+    </div>
+</div>
+
+<!--Centramos y hacemos margenes-->
+
+
+<div class="container2 section">
+    <!--Sistema de Columnas-->
+    <div class="row">
+
+        <!--Otro sistema de columnas por los campos y cardpanel para tener una tarjeta-->
+
+        <div class="row card-panel">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="input-field col s12">
+
+                    <div class="divider"></div>
+                    <h5>Trabajo Práctico: {{nombre}}</h5> Número: {{idtrabajo}}
+                    <div class="divider"></div>
+                    <p>Ingrese las preguntas y respuestas:</p>
+                    <button type="button" id="btnAddtoList" class="btn granate center">Agregar pregunta<i class="material-icons right">playlist_add</i></button>
+<button type="button" id="remove" class="btn granate">Eliminar última<i class="material-icons right">delete_sweep</i></button>
+                    <h4 class="card-title2" id="card-title2"></h4>
+					
+					</div>
+
+
+                <div class="input-field col s12">
+				<div class="divider"></div>
+				<br>
+                    <button type="submit" href="htrabajo" class="btn granate right">Finalizar Trabajo<i class="material-icons right">send</i></button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %} {% block scriptfin %}
+<!-- Código -->
+<!-- Funcion que agrega preguntas-->
+<script>
+    $(function() {
+        var count = 1;
+		
+        $('#btnAddtoList').click(function() {
+           
+			  var newDiv = $('<div class="card-panel" id="panel'+ count + '"  ><h5 class="header2">Pregunta: ' + count + '</h5><div class="row"> <div class="col s12"> <input type="hidden" name="cantidad" value=' + count + '> <textarea id="textarea2" placeholder="Ingrese aquí su pregunta" name="consigna'+ count + '" rows="4" class="materialize-textarea" data-length="120" data-link="question_text"></textarea> <div id="container' + count + '" class=""> <div class="input-field col s6"><label><input type="checkbox" name="checkbox-1"><span>Respuesta 1</span></input></label></div><div class="input-field col s12"><input type="text" placeholder="Ingrese su primera respuesta y seleccione si es correcta"/></div><div class="input-field col s6"><label><input type="checkbox" name="checkbox-2"><span>Respuesta 2</span></input></label></div><div class="input-field col s12"><input type="text" placeholder="Ingrese su segunda respuesta y seleccione si es correcta"/></div><div class="input-field col s6"><label><input type="checkbox" name="checkbox-3"><span>Respuesta 3</span></input></label></div><div class="input-field col s12"><input type="text" placeholder="Ingrese su tercera respuesta y seleccione si es correcta"/></div></div></div> </div></div>');
+			
+            $("#card-title2").append(newDiv);
+            count++;
+        });
+		
+		$("#remove").on("click", function() {
+		if(count>1){
+		count--;
+    $("#panel"+ count).remove();
+    }
+});
+
+    });
+
+
+</script>
+<!-- Fin Código -->
+{% endblock scriptfin %}

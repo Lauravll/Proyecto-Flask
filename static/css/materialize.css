@@ -312,8 +312,9 @@
 }
 
 .granate-text {
-  background-color: #750016 !important;
+  color: #750016 !important;
 }
+
 .purple {
   background-color: #9c27b0 !important;
 }
@@ -9156,3 +9157,21 @@ footer.sticky {
   padding-left: 0;
 }
 
+.bg-card-user {
+	margin: 0 auto;
+	background: rgba(9, 6, 7, 0.30);
+	max-width: 1280px;
+	width: 98%;
+	padding: 40px 0;
+}
+.truncate >img {
+	width: 150px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+@media only screen and (min-width: 993px) {
+  .bg-card-user {
+    width: 99%;
+  }
+}

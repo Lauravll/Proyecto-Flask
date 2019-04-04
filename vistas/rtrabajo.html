@@ -1,0 +1,114 @@
+{% extends 'base/base.html'%} {% block title %} {{titulo}} {% endblock %} {% block scriptini %}
+<!-- Código -->
+<!-- Función que agrega respuestas en función del valor ingresado por el usuario -->
+
+
+<!-- Fin Código -->
+{% endblock scriptini %} {% block content %} {% from "_macro.html" import render_field %}
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+<!-- Margen con contenedor centrado-->
+<div class="container ">
+    <div class="row">
+
+    </div>
+</div>
+
+<!--Centramos y hacemos margenes-->
+
+
+<div class="container2 section">
+    <!--Sistema de Columnas-->
+    <div class="row">
+
+        <!--Otro sistema de columnas por los campos y cardpanel para tener una tarjeta-->
+
+        <div class="row card-panel">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="input-field col s12">
+
+                    <div class="divider"></div>
+                    <h5>Trabajo Práctico: {{nombre}}</h5> Número: {{idtrabajo}}
+                    <div class="divider"></div>
+                   
+                    
+					<input type="hidden" id="fieldnum" name="fieldnum" value="3">
+				<br>
+              
+                   
+                    <div class="card-title2" id="card-title2"></div>
+					
+					</div>
+
+
+                <div class="input-field col s12">
+				<div class="divider "></div>
+				<br>
+                    <button type="submit" href="htrabajo" class="btn granate right">Finalizar Trabajo<i class="material-icons right">send</i></button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %} {% block scriptfin %}
+<!-- Código -->
+<!-- Funcion que agrega preguntas-->
+<script>
+    $(function() {
+        var count = 1;
+        var num = 0;
+  var list = [
+    { preg:"Esta es la pregunta 1",id:4, rtas:[
+    {r1:"Esta es la respuesta 1 de pregunta 1", check:  'checked="checked"', ccolor:'class="green-text"', },
+    {r2:"Esta es la respuesta 2 de pregunta 1", check:  '' , ccolor:'class="grey-text"', },
+    {r3:"Esta es la respuesta 3 de pregunta 1", check:  '' , ccolor:'class="grey-text"', },
+    ] 
+    },
+    { preg:"Esta es la pregunta 2",id:6, rtas:[
+    {r1:"Esta es la respuesta 1 de pregunta 2", check:  '',ccolor:'class="grey-text"' },
+    {r2:"Esta es la respuesta 2 de pregunta 2 para Kitty", check:  '', ccolor:'class="red-text"',  },
+    {r3:"Esta es la respuesta 3 de pregunta 2", check:  'checked="checked"', ccolor:'class="green-text"',  },
+    ]  
+    },
+    { preg:"Esta es la pregunta 3 de Lucky",id:6,  rtas:[
+    {r1:"Esta es la respuesta 1 de pregunta 3", check:  '',ccolor:'class="red-text"' },
+    {r2:"Esta es la respuesta 2 de pregunta 3 ", check:  'checked="checked"', ccolor:'class="green-text"',  },
+    {r3:"Esta es la respuesta 3 de pregunta 3", check:  '' , ccolor:'class="grey-text"', },
+    ]  
+    },
+    ]
+   
+        $(document).ready(function() {
+		var number = document.getElementById("fieldnum").value;
+	number++;
+			  while (count<number) {
+           
+			  
+              var newDiv = $('<div class="card-panel" id="panel'+ count + '"><h5 class="header2">Pregunta: ' + count + '</h5><div class="row"><div class="col s12"><h6 class="grey-text">'+list[num].preg+'</h6><div class="divider blue-grey lighten-2"></div><br><p><h6 class="black-text">Respuesta 1:</h6> <label><input type="checkbox"  name="checkbox-1" /><span>'+list[num].rtas[0].r1+'</span></label></p><div class="divider blue-grey lighten-2"></div><p><h6 class="black-text">Respuesta 2:</h6><label><input type="checkbox" name="checkbox-2" /><span>'+list[num].rtas[1].r2+'</span></label></p><div class="divider blue-grey lighten-2"></div><p><h6 class="black-text">Respuesta 3:</h6><label><input type="checkbox" name="checkbox-3" /><span>'+list[num].rtas[2].r3+'</span></label></p><div class="divider blue-grey lighten-2"></div></div></div></div>');
+			
+          
+            $("#card-title2").append(newDiv);
+            count++;
+            num++;
+        }
+    });
+
+    $("#remove2").on("click", function() {
+		if(count>1){
+		count--;
+    $("#panel"+ count).remove();
+    }
+
+});
+
+    });
+
+
+</script>
+
+
+
+<!-- Fin Código -->
+{% endblock scriptfin %}

@@ -23,6 +23,10 @@ $(document).ready(function(){
   );
 });
 
+$(document).ready(function(){
+    $('select').formSelect();
+  });
+
 /*Para el preloader*/
 window.addEventListener('load', () => {
   /*Si lo quiero reetrazar, si fuera de un sitio externo no seria necesario */

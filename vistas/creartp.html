@@ -1,0 +1,87 @@
+{% extends 'base/base.html'%}
+
+{% block title %} {{titulo}} {% endblock %}
+{% block content %}
+{% from "_macro.html" import render_field %}
+
+<!-- Margen con contenedor centrado-->
+<div class="container ">
+        <div class="row">
+
+        </div>
+    </div>
+
+<!--Centramos y hacemos margenes-->
+<form name="prueba" id="creartpForm" method="post"> <!--Metodo post, no aparece en url -->
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+<div class="container2 section">
+    <!--Sistema de Columnas-->
+    <div class="row">
+        <form class="col s12">
+            
+            <!--Otro sistema de columnas por los campos y cardpanel para tener una tarjeta-->
+            <div class="row card-panel">
+                    <h5>Nuevo trabajo práctico</h5>
+                    <p class="card-description">Ingrese los siguientes datos:</p>
+                <!--Campo y validaciones-->
+                <div class="input-field col s12">
+                    {{render_field(form.titulo,placeholder='Ingrese el Usuario', class_='validate')}}
+                </div>
+
+                <div class="input-field col s12">
+            
+                    {{render_field(form.carrera,placeholder='Ingrese la Carrera', class_='validate')}}
+            </div>
+
+            <div class="input-field col s12">
+                    <select  class="validate" id="materia" name="materia" placeholder='Ingrese el Usuario'>
+                            <option value="0"></option>
+                          </select>
+                          <label for="materia">Materia:</label> 
+            </div>
+         
+             
+                <button class="btn granate center" type="submit">Enviar</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+</form>
+
+
+{% endblock %}
+
+{% block script %} 
+<script>
+  
+    $(document).on('change','#carrera', function(){
+       get_selected();         
+    })
+    
+    function get_selected(){
+       
+       var carrera_select = document.getElementById("carrera");
+        var optionHTML = "";
+          
+               
+              carrera = carrera_select.value;
+              
+              fetch('/materia/' + carrera).then(function(response) {
+    
+                  response.json().then(function(data) {
+                      for (var materia of data.cities) {
+                        $('#materia').empty();
+                          optionHTML += '<option value="' + materia.id + '">' + materia.name + '</option>';
+                          $('#materia').append(optionHTML);
+                          $("#materia").formSelect()
+                      }
+                  })
+                  
+              });
+          
+         
+    };
+          
+    </script>
+{% endblock %}

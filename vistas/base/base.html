@@ -19,10 +19,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/ico/logoUnla.png' ) }}">
+	
+	
+  <!-- Include external CSS. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+ 
+  <!-- Include Editor style. -->
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body>
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+<!-- Include external JS libs. -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+ 
+  <!-- Include Editor JS files. -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.5.1//js/froala_editor.pkgd.min.js"></script>
+  {% block scriptini %}
+  {% endblock scriptini %}
     <!--Preloader-->
 
     <div class="center section" id="circulo">
@@ -52,15 +71,15 @@
                     <!--Esta vez es un div para poder darle formato-->
                     <div class="nav-wrapper">
                         <div class="row">
-                         
+
                     <div class="col s1">
                         <!--Logo con imagen-->
-                        
+
                         <a href="#" id="prueba" class="hide-on-med-and-down" ><i class="material-icons">menu</i></a>
 
-                    </div> 
+                    </div>
                             <div class="col s9">
-                                
+
 
                                 <!--Menu responsive-->
                                 <!--Si le pongo icono funciona-->
@@ -110,87 +129,60 @@
             </li>
 
             <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan">
+                <a class="collapsible-header waves-effect waves-cyan" href="docente">
                     <i class="material-icons">dashboard</i>
                     <span class="nav-text">Inicio</span>
                 </a>
-
+ <li>
+                <div class="divider"></div>
             </li>
-
-            <ul class="collapsible collapsible-accordion">
-                <li>
-                    <a class="collapsible-header  waves-effect waves-cyan ">
-                        <i class="material-icons">dvr</i>
-                        <span class="nav-text">Trabajos Prácticos*</span>
-
-                    </a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li>
-                                <a href="form-elements.html">
-                                    <i class="material-icons">keyboard_arrow_right</i>
-                                    <span>Editar trabajo</span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--class="active"-->
-                                <a href="16) Autocomplete y Buscador.html">
-                                    <i class="material-icons">keyboard_arrow_right</i>
-                                    <span>Buscar trabajo</span>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </li>
-            </ul>
-
-            <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">mail_outline</i>
-                    <span class="nav-text">Mensajes</span>
+            <li><a class="subheader">Trabajos prácticos</a></li>
+            </li>
+             <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan" href="creartp">
+                    <i class="material-icons">dvr</i>
+                    <span class="nav-text">Crear Trabajo</span>
                 </a>
+
             </li>
-            <li class="bold">
+               <li class="bold">
                 <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">today</i>
-                    <span class="nav-text">Calendario</span>
+                    <i class="material-icons">mode_edit</i>
+                    <span class="nav-text">Editar Trabajo</span>
                 </a>
+
             </li>
 
-            <ul class="collapsible collapsible-accordion">
-                <li>
-                    <a class="collapsible-header  waves-effect waves-cyan ">
-                        <i class="material-icons">chrome_reader_mode</i>
-                        <span class="nav-text">Extra*</span>
+<li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">delete_sweep</i>
+                    <span class="nav-text">Eliminar Trabajo</span>
+                </a>
 
-                    </a>
-                    <div class="collapsible-body">
-                        <ul>
-                            <li>
-                                <a href="form-elements.html">
-                                    <i class="material-icons">keyboard_arrow_right</i>
-                                    <span>Editar trabajo</span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--class="active"-->
-                                <a href="form-layouts.html">
-                                    <i class="material-icons">keyboard_arrow_right</i>
-                                    <span>Buscar trabajo</span>
-                                </a>
-                            </li>
-                        </ul>
+            </li>
+           
+        <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">search</i>
+                    <span class="nav-text">Buscar Trabajo</span>
+                </a>
 
-                    </div>
-                </li>
-            </ul>
+            </li>
+            
+              
+            
 
-            <ul class="collapsible collapsible-accordion">
+
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="subheader">Más</a></li>
+     
+<ul class="collapsible collapsible-accordion">
                 <li>
                     <a class="collapsible-header  waves-effect waves-cyan ">
                         <i class="material-icons">account_circle</i>
-                        <span class="nav-text">Personal*</span>
+                        <span class="nav-text">Personal</span>
 
                     </a>
                     <div class="collapsible-body">
@@ -201,12 +193,7 @@
                                     <span>Editar información</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="user-register.html">
-                                    <i class="material-icons">keyboard_arrow_right</i>
-                                    <span>Recordar clave</span>
-                                </a>
-                            </li>
+                          
                             <li>
                                 <a href="user-forgot-password.html">
                                     <i class="material-icons">keyboard_arrow_right</i>
@@ -219,29 +206,6 @@
                     </div>
                 </li>
             </ul>
-
-            <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">pie_chart_outlined</i>
-                    <span class="nav-text">Estadísticas</span>
-                </a>
-
-            </li>
-
-            <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="subheader">Más</a></li>
-            <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">import_contacts</i>
-                    <!--<span class="nav-text" onclick="M.toast({html: 'Incluir texto de ayuda', classes: 'granate'})">Ayuda</span>-->
-
-                    <!--Con una funcion-->
-                    <span class="nav-text" onclick="alerta()">Documentación</span>
-                </a>
-            </li>
-
             <li class="bold ">
                 <a class="collapsible-header waves-effect waves-cyan modal-trigger" href="#modal1">
                     <i class="material-icons">help_outline</i>
@@ -305,10 +269,10 @@
 
         <main>
             {% block content %}
-            
-            
+
+
             {% endblock %}
-           
+
         </main>
 
         <div class="container section">
@@ -344,11 +308,11 @@
         </div>
     </div>
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  
     <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js' ) }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/perfect-scrollbar.min.js' ) }}" ></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/funciones.js' ) }}"></script>
-    
+
     <!-- Inicializamos el Javascript (todas sus funciones)-->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -438,6 +402,7 @@
 
         });
     </script>
+	{% block script %} {% endblock %}
 
     <!--Alerta-->
     <!--Sirve para cualquier elemento-->
@@ -467,6 +432,15 @@
             $('.modal').modal();
         });
     </script>
+
+    <script>
+        $(document).ready(function(){
+    $('select').formSelect();
+  });
+    </script>
+	
+	{% block scriptfin %}
+	{% endblock scriptfin %}
 
 </body>
 
